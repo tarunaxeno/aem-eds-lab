@@ -1,0 +1,13 @@
+{
+  "sites": {
+    "aem-eds-lab": {
+      "previewOrg": "tarunaxeno",
+      "previewSite": "aem-eds-lab",
+      "contentHostUrl": "author-p8803-e1283844.adobeaemcloud.com",
+      "aemSitePath": "/content/aem-eds-lab",
+      "aemAssetsFolderPath": "/content/dam/aem-eds-lab",
+      "aemSiteName": "aem-eds-lab",
+      "aemSiteTitle": "AEM-EDS-LAB"
+    }
+  }
+}

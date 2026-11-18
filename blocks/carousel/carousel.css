@@ -1,0 +1,280 @@
+/* ---------- base / mobile (stacked: image above text) ---------- */
+.carousel {
+  position: relative;
+}
+
+.carousel .carousel-slides-container {
+  position: relative;
+}
+
+.carousel .carousel-slides,
+.carousel .carousel-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel .carousel-slides {
+  position: relative;
+  display: flex;
+  overflow: scroll clip;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.carousel .carousel-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel .carousel-slide {
+  position: relative;
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.carousel .carousel-slide-image {
+  line-height: 0;
+}
+
+.carousel .carousel-slide-image picture,
+.carousel .carousel-slide-image img {
+  display: block;
+  width: 100%;
+}
+
+.carousel .carousel-slide-image img {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+}
+
+.carousel .carousel-slide-content {
+  padding: 16px 0 0;
+}
+
+.carousel .carousel-slide-content > :first-child {
+  margin-top: 0;
+}
+
+.carousel .carousel-slide-content p.button-wrapper {
+  margin-top: 16px;
+}
+
+/* slides without an image get a light panel */
+.carousel .carousel-slide:not(:has(.carousel-slide-image)) .carousel-slide-content {
+  padding: 24px;
+  background-color: var(--light-color);
+}
+
+/* ---------- focus ---------- */
+.carousel button:focus-visible,
+.carousel .carousel-slides:focus-visible {
+  outline: 3px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/* ---------- indicators ---------- */
+.carousel .carousel-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 8px;
+  padding: 12px 0 0;
+}
+
+.carousel .carousel-slide-indicator {
+  line-height: 0;
+}
+
+/* 24px target with a 12px visible dot */
+.carousel .carousel-slide-indicator button {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+}
+
+.carousel .carousel-slide-indicator button::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid var(--dark-color);
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.carousel .carousel-slide-indicator button:hover::before {
+  background-color: var(--dark-color);
+}
+
+.carousel .carousel-slide-indicator button[aria-current='true']::before {
+  border-color: var(--text-color);
+  background-color: var(--text-color);
+  transform: scale(1.2);
+}
+
+/* ---------- previous / next ---------- */
+
+/* on mobile the arrows sit centred on the 16:9 image */
+.carousel .carousel-navigation-buttons {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  right: 8px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.carousel .carousel-navigation-buttons button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgb(19 19 19 / 50%);
+  color: var(--background-color);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 0.2s;
+}
+
+.carousel .carousel-navigation-buttons button:hover,
+.carousel .carousel-navigation-buttons button:focus-visible {
+  background-color: rgb(19 19 19 / 85%);
+}
+
+.carousel .carousel-navigation-buttons button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentcolor;
+  border-bottom: 0;
+  border-left: 0;
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel .carousel-navigation-buttons button.slide-next::after {
+  left: calc(50% - 2px);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* screen-reader only live region */
+.carousel .carousel-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- tablet: text overlays the image ---------- */
+@media (width >= 600px) {
+  .carousel .carousel-slide {
+    justify-content: center;
+    min-height: clamp(360px, 50vw, 560px);
+  }
+
+  .carousel .carousel-slide-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .carousel .carousel-slide-image picture,
+  .carousel .carousel-slide-image img {
+    height: 100%;
+  }
+
+  .carousel .carousel-slide-image img {
+    aspect-ratio: auto;
+  }
+
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+    margin: 48px 76px;
+    padding: 24px;
+    background-color: rgb(19 19 19 / 75%);
+    color: var(--background-color);
+  }
+
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+  }
+
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content a.button.primary {
+    border-color: var(--background-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content a.button.primary:hover,
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content a.button.primary:focus-visible {
+    border-color: var(--light-color);
+    background-color: var(--light-color);
+  }
+
+  .carousel .carousel-slide:not(:has(.carousel-slide-image)) .carousel-slide-content {
+    margin: 0 76px;
+  }
+
+  .carousel .carousel-navigation-buttons {
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    aspect-ratio: auto;
+  }
+}
+
+/* ---------- desktop ---------- */
+@media (width >= 900px) {
+  .carousel .carousel-slide:has(.carousel-slide-image) .carousel-slide-content {
+    max-width: 45%;
+    margin: 64px 92px;
+    padding: 32px;
+  }
+
+  .carousel .carousel-navigation-buttons {
+    left: 24px;
+    right: 24px;
+  }
+
+  .carousel .carousel-navigation-buttons button {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .carousel .carousel-slides {
+    scroll-behavior: auto;
+  }
+
+  .carousel .carousel-navigation-buttons button,
+  .carousel .carousel-slide-indicator button::before {
+    transition: none;
+  }
+}
