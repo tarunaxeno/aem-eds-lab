@@ -161,6 +161,88 @@
     ]
   },
   {
+    "id": "carousel-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_externalImage",
+        "label": "External Image URL",
+        "description": "Optional. Full https:// link to an image hosted anywhere. Used only when no image is selected above.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_externalImageDescription",
+        "label": "External Image Alt Text",
+        "description": "Describes the external image for screen readers.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_title",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "name": "content_titleType",
+        "label": "Heading Type",
+        "value": "h2",
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "H4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "content_cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "content_ctaText",
+        "label": "CTA Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
