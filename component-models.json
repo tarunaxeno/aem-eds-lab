@@ -296,5 +296,52 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "teaser",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "textContent_title",
+        "label": "Heading",
+        "value": "<h2>Enter a heading</h2>",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "textContent_description",
+        "label": "Description",
+        "value": "<p>Enter a description.</p>"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "textContent_cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "textContent_ctaText",
+        "label": "CTA Text",
+        "value": "Learn more"
+      }
+    ]
   }
 ]
